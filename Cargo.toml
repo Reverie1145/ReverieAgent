@@ -1,0 +1,61 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/reverie-core",
+    "crates/reverie-store",
+    "crates/reverie-llm",
+    "crates/reverie-tools",
+    "crates/reverie-runtime",
+    "crates/reverie-desktop",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.77"
+license = "MIT"
+authors = ["ReverieAgent"]
+
+[workspace.dependencies]
+reverie-core = { path = "crates/reverie-core" }
+reverie-store = { path = "crates/reverie-store" }
+reverie-llm = { path = "crates/reverie-llm" }
+reverie-tools = { path = "crates/reverie-tools" }
+reverie-runtime = { path = "crates/reverie-runtime" }
+
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+futures = "0.3"
+async-trait = "0.1"
+dashmap = "6"
+parking_lot = "0.12"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.22"
+mime_guess = "2"
+sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "sqlite", "chrono", "uuid", "macros", "migrate"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "multipart", "rustls-tls"] }
+eventsource-stream = "0.2"
+scraper = "0.26"
+htmd = "0.5"
+urlencoding = "2"
+similar = "2"
+ignore = "0.4"
+notify = "6"
+regex = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+thiserror = "2"
+anyhow = "1"
+bytes = "1"
+
+[profile.release]
+opt-level = 2
+lto = "thin"
+codegen-units = 4
+
+[profile.dev]
+opt-level = 0
+debug = 1

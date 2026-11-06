@@ -1,0 +1,26 @@
+# Rust
+/target
+**/*.rs.bk
+
+# Node
+node_modules/
+apps/desktop/dist/
+npm-debug.log*
+yarn-error.log*
+
+# Tauri
+crates/reverie-desktop/gen/
+
+# Runtime data
+*.db
+*.db-wal
+*.db-shm
+.reverie/
+
+# Tooling
+.workbuddy-ai/
+rustup-init.exe
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
